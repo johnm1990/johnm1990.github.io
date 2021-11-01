@@ -1,0 +1,71 @@
+<html>
+
+<head><title>Data 608 Module 5 Assignment</title></head>
+<body>
+    <h2>Data 608 Module 5 Assignment</h2>
+    <h3>John Mazon<br>October 31, 2021</h3>
+
+<body>
+
+<h3>1. Create a function to reverse any word that you type in. This can be typed into either an input box or an alert box, and then print the result in a box or on the webpage</h3>
+
+<p>
+<form name='ReverseForm'>
+    <input type="text" size="12" name='raw'>
+    <input type="button" value="See Reverse" onClick=print_result1()>
+</form>
+</p>
+
+<!-- create a div to display the result-->
+<div id="Q1_answer"></div>
+
+<!-- two functions, one to reverse the string, one to print the string onClick -->
+<script type="text/javascript">
+function reverser(string){
+  var output = '';
+    output = string.split('').reverse().join('');
+    return output
+};
+
+function print_result1(){
+    var target = document.getElementById('Q1_answer');
+    target.innerHTML = reverser(document.ReverseForm.raw.value);
+};
+</script>
+
+<br><br>
+<hr>
+<br><br>
+
+
+<h3>2. Create a function that takes an input number, and prints a table with the first 20 multiples of
+the number, in order 5x4</h3>
+
+
+<script type="text/javascript">
+function update_e1p2(num){
+  var mult = Array.from(new Array(20), (x,i) => i + 1);
+  var vals = mult.map(x => x * num);
+  var elem = "";  
+  for (var i = 0; i < vals.length; i++) {  
+    if (i % 4 == 0) {
+      elem += "<tr><td>" + vals[i] + "</td>";
+    } else if (i + 1 % 4 == 0) {
+      elem += "<td>" + vals[i] + "</td></tr>";
+    } else {
+      elem += "<td>" + vals[i] + "</td>";
+    }  
+  }
+  var table = '<table>' + elem + '</table>';  
+  return(table)
+};
+function callback_e1p2(){
+  var t = document.getElementById("target_e1p2");
+  t.innerHTML = update_e1p2(document.getElementById('num_e1p2').value);
+}
+</script>
+<form>
+  <input id="num_e1p2" type="number" size="4">
+  <input type="button" value="See Multiples" onClick="callback_e1p2();">
+</form>
+<div id="target_e1p2"></div>
